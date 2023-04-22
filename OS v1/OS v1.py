@@ -54,5 +54,14 @@ def clockfunc():
    button=Button(root,text="^",font=("Consolas", 18, 'bold'),fg="black",borderwidth=1,
                  cursor="hand2",activebackground='#000000',activeforeground='#E8E8E8',command=clock)
 clockfunc()
+z='''
+░█████╗░██╗░░░░░░█████╗░░█████╗░░██████╗
+██╔══██╗██║░░░░░██╔══██╗██╔══██╗██╔════╝
+███████║██║░░░░░██║░░██║██║░░██║╚█████╗░
+██╔══██║██║░░░░░██║░░██║██║░░██║░╚═══██╗
+██║░░██║███████╗╚█████╔╝╚█████╔╝██████╔╝
+╚═╝░░╚═╝╚══════╝░╚════╝░░╚════╝░╚═════╝░'''
+nlab=Label(root,text=z,fg='black',bg="#FFD700",font=("Consolas",10))
+nlab.place(x=1080,y=-10)
 lab.place(x=1260,y=728)
 button.place(x=1330,y=723)
