@@ -14,4 +14,5 @@ def pattern(n):
             z-=2
         print(str(p))
         p+=2
-pattern(int(input()))
+j=int(input("Enter the number of lines:")
+pattern(j)
