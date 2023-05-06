@@ -32,6 +32,7 @@ def large(l):
     for i in l:
         if i!=fir:
             sec=i
+            break
     for i in l:
         if i>sec and i!=fir:
             sec=i
