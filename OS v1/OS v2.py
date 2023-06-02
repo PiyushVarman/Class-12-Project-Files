@@ -69,7 +69,7 @@ z='''
 ██╔══██║██║░░░░░██║░░██║██║░░██║░╚═══██╗
 ██║░░██║███████╗╚█████╔╝╚█████╔╝██████╔╝
 ╚═╝░░╚═╝╚══════╝░╚════╝░░╚════╝░╚═════╝░'''
-nlab=Label(root,text=z,fg='black',bg="#FFD700",font=("Consolas",10))
+nlab=Label(root,text=z,fg='black',bg="#FFD700",font=("Consolas",9))
 nlab.place(x=1080,y=-10)
 lab.place(x=1260,y=728)
 button.place(x=1330,y=723)
