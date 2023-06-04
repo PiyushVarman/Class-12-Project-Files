@@ -11,8 +11,22 @@ root.configure(bg='#FFD700')
 root.title("AaloOs")
 tbar= Canvas(root,width='1366',height = "50")
 tbar.place(y=720)
+mbar=Canvas(root,width='1366',height = "27")
+mbar.place(y=0)
 lab=Label(root,font=("Calibri",18,"bold italic"))
-def plug():
+apps=[
+   "Calculator",
+   "Clock",
+   "Github Link"]
+def launch():
+   global clicked
+   c=(clicked.get()).lower()
+   c=c.replace(" ","")
+   print(c)
+   eval(c)()
+   clicked.set("Applications")
+   
+def githublink():
    webbrowser.open_new_tab("Github.com/PiyushVarman")
 
 def clock():
@@ -46,13 +60,15 @@ def clock():
       fullcal.configure(bg='#E8E8E8')
       yc=Label(fullcal,text=calendar.calendar(y),font=("Consolas",12,"bold"),bg='#E8E8E8')
       yc.pack()
+      fullcal.attributes('-topmost',True)
       fullcal.mainloop()
    ycal=Button(fclock, text=f"{today:%Y} Calendar",font=("Consolas",15,"bold"),bg='#E8E8E8',
                activebackground="#000000",activeforeground='#E8E8E8',command=yearcal)
    ycal.pack()
    fclock.focus() 
    fclock.mainloop()  
-line=''
+line='' #Expression within the input bar of the calculator
+
 def calculator():
    global line
    calc=Toplevel(root)
@@ -78,7 +94,7 @@ def calculator():
       line=""
       eq.set(line)
 
-   def bs():
+   def bs(): #backspace
       global line
       line=line[:-1]
       eq.set(line)
@@ -160,11 +176,12 @@ def clockfunc():
    button=Button(root,text="^",font=("Consolas", 18, 'bold'),fg="black",borderwidth=1,
                  cursor="hand2",activebackground='#000000',activeforeground='#E8E8E8',command=clock)
 clockfunc()
-calcbut=Button(root,text="Yo loosu",command=calculator)
-calcbut.place(x=540,y=400)
-lbut=Button(root,text="Visit my Github!",font=("Consolas",10,"italic"),fg="black",bg="#FFD700",activebackground="#000000",activeforeground="red")
-lbut.bind("<Button-1>",lambda e:plug())
-lbut.place(x=1240,y=690)
+clicked=StringVar()
+clicked.set("Applications")
+applauncher=OptionMenu(root, clicked, *apps)
+applauncher.place(x=0,y=0)
+launchbut=Button(root,text="Launch",activebackground="#000000",activeforeground="#FFFFFF",font=("Calibri",10,"bold"),command=lambda: launch())
+launchbut.place(x=150,y=3)
 z='''
 ░█████╗░░█████╗░██╗░░░░░░█████╗░░█████╗░░██████╗
 ██╔══██╗██╔══██╗██║░░░░░██╔══██╗██╔══██╗██╔════╝
@@ -173,6 +190,6 @@ z='''
 ██║░░██║██║░░██║███████╗╚█████╔╝╚█████╔╝██████╔╝
 ╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░░╚════╝░╚═════╝░'''
 nlab=Label(root,text=z,fg='black',bg="#FFD700",font=("Consolas",9))
-nlab.place(x=1025,y=-10)
+nlab.place(x=1025,y=35)
 lab.place(x=1260,y=728)
 button.place(x=1330,y=723)
