@@ -33,6 +33,7 @@ def clock():
    y,m=int(f"{today:%Y}"),int(f"{today:%m}")
    cal=Label(fclock,text=calendar.month(y,m),font=("Consolas",18),bg='#E8E8E8')
    cal.pack(pady=50)
+   fclock.attributes('-topmost',True)
    def fullclock():
       hms= time.strftime("%H:%M:%S")
       clabel.config(text=hms)
@@ -59,6 +60,7 @@ def calculator():
    calc.geometry("355x250")
    calc.configure(bg="#DBDBDB")
    calc.resizable(False,False)
+   calc.attributes('-topmost',True)
    def press(num):
       global line
       line=line+str(num)
@@ -66,7 +68,7 @@ def calculator():
    def equal():
       global line
       if line[-1:-3:-1]=="**":
-         messagebox.showerror(title="Error!",message="Please input a value\nas the power.")
+         messagebox.showerror("Error!","Please input a value\nas the power.")
       else:
          line=str(eval(line))
       
@@ -143,6 +145,10 @@ def calculator():
    calc.bind('9',lambda event:press(9))
    calc.bind('0',lambda event:press(0))
    calc.bind('+',lambda event:press("+"))
+   calc.bind('-',lambda event:press("-"))
+   calc.bind('*',lambda event:press("*"))
+   calc.bind('/',lambda event:press("/"))
+   calc.bind('.',lambda event:press("."))
    calc.bind('<KP_Enter>',lambda event:equal())
    calc.bind('<BackSpace>',lambda event:bs())
 
