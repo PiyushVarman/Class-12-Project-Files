@@ -8,6 +8,10 @@ def press(num):
     global z
     z=z+str(num)
     eq.set(z)
+def equal():
+    global z
+    eq.set(eval(z))
+    
 z=''
 eq=StringVar()
 win=Entry(root,width=32,font=(18),textvariable=eq)
@@ -28,7 +32,7 @@ bpo=Button(root,text="𝓍ⁿ",width=8,font=("Calibri",15),bg="#EDEDED",borderwi
 bpo.grid(row=3,column=3)
 bcl=Button(root,text="CLEAR",width=8,font=("Calibri",15,"bold"),bg="#FF0000",fg="#FFFFFF",borderwidth=0.5)
 bcl.grid(row=4,column=3)
-beq=Button(root,text="=",width=8,font=("Calibri",15,"bold"),bg="#0DFF00",fg="#FFFFFF",borderwidth=0.5)
+beq=Button(root,text="=",width=8,font=("Calibri",15,"bold"),bg="#0DFF00",fg="#FFFFFF",borderwidth=0.5,command=lambda:equal())
 beq.grid(row=5,column=3)
 bbs=Button(root,text="Backspace",width=8,font=("Calibri",14),bg="#000000",fg="#FFFFFF",borderwidth=0.5)
 bbs.grid(row=5,column=0)
