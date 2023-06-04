@@ -4,18 +4,22 @@ root.title("Calculator")
 root.geometry("355x250")
 root.configure(bg="#DBDBDB")
 root.resizable(False,False)
-eq="sui"
-win=Entry(root,width=32
-          ,font=(18),textvariable="sui")
+def press(num):
+    global z
+    z=z+str(num)
+    eq.set(z)
+z=''
+eq=StringVar()
+win=Entry(root,width=32,font=(18),textvariable=eq)
 win.grid(columnspan=40,pady=10)
 
-bpl=Button(root,text="+",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5)
+bpl=Button(root,text="+",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("+"))
 bpl.grid(row=1,column=0)
-bsub=Button(root,text="-",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5)
+bsub=Button(root,text="-",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("-"))
 bsub.grid(row=1,column=1)
-bmu=Button(root,text="x",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5)
+bmu=Button(root,text="x",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("x"))
 bmu.grid(row=1,column=2)
-bdi=Button(root,text="÷",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5)
+bdi=Button(root,text="÷",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("/"))
 bdi.grid(row=1,column=3)
 
 bsr=Button(root,text="√𝓍",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5)
