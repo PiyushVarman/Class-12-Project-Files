@@ -1,20 +1,39 @@
 from tkinter import *
+from tkinter import messagebox
 root=Tk()
 root.title("Calculator")
 root.geometry("355x250")
 root.configure(bg="#DBDBDB")
 root.resizable(False,False)
 def press(num):
-    global z
-    z=z+str(num)
-    eq.set(z)
+    global line
+    line=line+str(num)
+    eq.set(line)
 def equal():
-    global z
-    eq.set(eval(z))
+    global line
+    if line[-1:-3:-1]=="**":
+        messagebox.showerror(title="Error!",message="Please input a value\nas the power.")
+    else:
+        line=str(eval(line))
     
-z=''
+    eq.set(line)
+def clear():
+    global line
+    line=""
+    eq.set(line)
+
+def bs():
+    global line
+    line=line[:-1]
+    eq.set(line)
+def xn():
+    global line
+    line=line+str("**")
+    eq.set(line)
+line=''
 eq=StringVar()
-win=Entry(root,width=32,font=(18),textvariable=eq)
+win=Entry(root,width=32,font=(20),textvariable=eq)
+win.config(state="disabled",disabledforeground="#000000")
 win.grid(columnspan=40,pady=10)
 
 bpl=Button(root,text="+",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("+"))
@@ -28,13 +47,13 @@ bdi.grid(row=1,column=3)
 
 bsr=Button(root,text="√𝓍",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("**0.5"))
 bsr.grid(row=2,column=3)
-bpo=Button(root,text="𝓍ⁿ",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5)
+bpo=Button(root,text="𝓍ⁿ",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:xn())
 bpo.grid(row=3,column=3)
-bcl=Button(root,text="CLEAR",width=8,font=("Calibri",15,"bold"),bg="#FF0000",fg="#FFFFFF",borderwidth=0.5)
+bcl=Button(root,text="CLEAR",width=8,font=("Calibri",15,"bold"),bg="#FF0000",fg="#FFFFFF",borderwidth=0.5,command=lambda:clear())
 bcl.grid(row=4,column=3)
 beq=Button(root,text="=",width=8,font=("Calibri",15,"bold"),bg="#0DFF00",fg="#FFFFFF",borderwidth=0.5,command=lambda:equal())
 beq.grid(row=5,column=3)
-bbs=Button(root,text="Backspace",width=8,font=("Calibri",14),bg="#000000",fg="#FFFFFF",borderwidth=0.5)
+bbs=Button(root,text="Backspace",width=8,font=("Calibri",14),bg="#000000",fg="#FFFFFF",borderwidth=0.5,command=lambda:bs())
 bbs.grid(row=5,column=0)
 
 b1=Button(root,text="1",width=8,font=("Calibri",15,"bold"),bg="#FFFFFF",borderwidth=0.5,command=lambda:press("1"))
