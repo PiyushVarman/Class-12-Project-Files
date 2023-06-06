@@ -22,9 +22,8 @@ def launch():
    global clicked
    c=(clicked.get()).lower()
    c=c.replace(" ","")
-   print(c)
-   eval(c)()
    clicked.set("Applications")
+   eval(c)()
    
 def githublink():
    webbrowser.open_new_tab("Github.com/PiyushVarman")
@@ -168,6 +167,21 @@ def calculator():
    calc.bind('<KP_Enter>',lambda event:equal())
    calc.bind('<BackSpace>',lambda event:bs())
 
+def off():
+   global sign
+   if messagebox.askyesno("Power off","Would you like\nto quit the operating environment?")==True:
+      sign='''
+░██████╗░░█████╗░░█████╗░██████╗░██████╗░██╗░░░██╗███████╗██╗
+██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██║
+██║░░██╗░██║░░██║██║░░██║██║░░██║██████╦╝░╚████╔╝░█████╗░░██║
+██║░░╚██╗██║░░██║██║░░██║██║░░██║██╔══██╗░░╚██╔╝░░██╔══╝░░╚═╝
+╚██████╔╝╚█████╔╝╚█████╔╝██████╔╝██████╦╝░░░██║░░░███████╗██╗
+░╚═════╝░░╚════╝░░╚════╝░╚═════╝░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝'''
+      nlab.config(text=sign,bg='#000000',fg='#FFFFFF')
+      nlab.place(x=935)
+      root.configure(bg='#000000')
+      root.after(1000,lambda: root.destroy())
+
 def clockfunc():
    global button
    text_input = time.strftime("%H:%M")
@@ -182,14 +196,16 @@ applauncher=OptionMenu(root, clicked, *apps)
 applauncher.place(x=0,y=0)
 launchbut=Button(root,text="Launch",activebackground="#000000",activeforeground="#FFFFFF",font=("Calibri",10,"bold"),command=lambda: launch())
 launchbut.place(x=150,y=3)
-z='''
+powerbut=Button(root,text="Power",activebackground="#000000",activeforeground="#FFFFFF",command=off)
+powerbut.place(x=1320,y=3)
+sign='''
 ░█████╗░░█████╗░██╗░░░░░░█████╗░░█████╗░░██████╗
 ██╔══██╗██╔══██╗██║░░░░░██╔══██╗██╔══██╗██╔════╝
 ███████║███████║██║░░░░░██║░░██║██║░░██║╚█████╗░
 ██╔══██║██╔══██║██║░░░░░██║░░██║██║░░██║░╚═══██╗
 ██║░░██║██║░░██║███████╗╚█████╔╝╚█████╔╝██████╔╝
 ╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░░╚════╝░╚═════╝░'''
-nlab=Label(root,text=z,fg='black',bg="#FFD700",font=("Consolas",9))
+nlab=Label(root,text=sign,fg='black',bg="#FFD700",font=("Consolas",9))
 nlab.place(x=1025,y=35)
 lab.place(x=1260,y=728)
 button.place(x=1330,y=723)
