@@ -180,6 +180,8 @@ def off():
       nlab.config(text=sign,bg='#000000',fg='#FFFFFF')
       nlab.place(x=935)
       root.configure(bg='#000000')
+      tbar.destroy()
+      mbar.destroy()
       root.after(1000,lambda: root.destroy())
 
 def clockfunc():
