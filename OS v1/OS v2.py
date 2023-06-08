@@ -19,7 +19,7 @@ apps=[
    "Calculator",
    "Clock",
    "Notepad",
-   "Jogger"
+   "Jogger",
    "Github Link"
    ]
 def launch():
@@ -37,12 +37,17 @@ def jogger(): #Use Control-S to activate your colour option
    jog.attributes('-topmost',True)
    jog.title("Jog")
    jog.geometry("465x221")
-   enter=Text(jog,height=1,width=100)
-   enter.place(x=50,y=50)
+   jog.resizable(False,False)
+   bgl=Label(jog,text="Enter the background colour (Use ctrl+S):")
+   bgl.place(x=10,y=60)
+   enter=Text(jog,height=1,width=55)
+   enter.place(x=10,y=90)
    def en():
       s=(enter.get(1.0,END)).strip()
-      nlab.configure(bg=str(s))
+      nlab.configure(bg=str(s),fg='black')
       root.configure(bg=str(s))
+      if s.lower()=='black':
+         nlab.configure(fg='white')
    jog.bind('<Control_L>s',lambda event:en())
    jog.mainloop()
    
@@ -218,6 +223,20 @@ def calculator():
    calc.bind('.',lambda event:press("."))
    calc.bind('<KP_Enter>',lambda event:equal())
    calc.bind('<BackSpace>',lambda event:bs())
+def off():
+   global sign
+   if messagebox.askyesno("Power off","Would you like\nto quit the operating environment?")==True:
+      sign='''
+░██████╗░░█████╗░░█████╗░██████╗░██████╗░██╗░░░██╗███████╗██╗
+██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██║
+██║░░██╗░██║░░██║██║░░██║██║░░██║██████╦╝░╚████╔╝░█████╗░░██║
+██║░░╚██╗██║░░██║██║░░██║██║░░██║██╔══██╗░░╚██╔╝░░██╔══╝░░╚═╝
+╚██████╔╝╚█████╔╝╚█████╔╝██████╔╝██████╦╝░░░██║░░░███████╗██╗
+░╚═════╝░░╚════╝░░╚════╝░╚═════╝░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝'''
+      nlab.config(text=sign,bg='#000000',fg='#FFFFFF')
+      nlab.place(x=935)
+      root.configure(bg='#000000')
+      root.after(1000,lambda: root.destroy())
 
 def clockfunc():
    global button
@@ -233,7 +252,8 @@ applauncher=OptionMenu(root, clicked, *apps)
 applauncher.place(x=0,y=0)
 launchbut=Button(root,text="Launch",activebackground="#000000",activeforeground="#FFFFFF",font=("Calibri",10,"bold"),command=lambda: launch())
 launchbut.place(x=150,y=3)
-
+powerbut=Button(root,text="Power",activebackground="#000000",activeforeground="#FFFFFF",command=off)
+powerbut.place(x=1320,y=3)
 z='''
 ░█████╗░░█████╗░██╗░░░░░░█████╗░░█████╗░░██████╗
 ██╔══██╗██╔══██╗██║░░░░░██╔══██╗██╔══██╗██╔════╝
