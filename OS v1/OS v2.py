@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter import filedialog
 import time
 import datetime as dt
 import calendar
@@ -17,7 +18,10 @@ lab=Label(root,font=("Calibri",18,"bold italic"))
 apps=[
    "Calculator",
    "Clock",
-   "Github Link"]
+   "Notepad",
+   "Jogger"
+   "Github Link"
+   ]
 def launch():
    global clicked
    c=(clicked.get()).lower()
@@ -27,6 +31,20 @@ def launch():
    
 def githublink():
    webbrowser.open_new_tab("Github.com/PiyushVarman")
+def jogger():
+   jog=Toplevel(root)
+   jog.attributes('-topmost',True)
+   jog.title("Jog")
+   jog.geometry("465x221")
+   enter=Text(jog,height=1,width=100)
+   enter.place(x=50,y=50)
+   def en():
+      s=(enter.get(1.0,END)).strip()
+      nlab.configure(bg=str(s))
+      root.configure(bg=str(s))
+   jog.bind('<Control_L>s',lambda event:en())
+   jog.mainloop()
+   
 
 def clock():
    global fclock
@@ -67,7 +85,40 @@ def clock():
    fclock.focus() 
    fclock.mainloop()  
 line='' #Expression within the input bar of the calculator
+def notepad():
+   note=Toplevel(root)
+   note.geometry("1000x700")
+   note.title("AalWrite")
+   note.resizable(False,False)
+   note.configure(bg="#cec5c6")
 
+   def savefile():
+      note.configure(bg='green')
+      save_file=filedialog.asksaveasfile(mode='w',defaultextension='.txt')
+      if save_file is None:
+         return
+      text=str(textentry.get(1.0,END))
+      save_file.write(text)
+      save_file.close()
+      note.configure(bg="#cec5c6")
+
+   def openfile():
+      note.configure(bg="#000000")
+      open_file=filedialog.askopenfile(mode='r',filetype=[('text files','*.txt')])
+      if open_file is not None:
+         internal=open_file.read()
+      textentry.delete(1.0,END)
+      textentry.insert(INSERT,internal)
+      note.configure(bg="#cec5c6")
+
+   sfb=Button(note,text="Save File",command=savefile).place(x=20,y=10)
+   ofb=Button(note,text="Open File",command=openfile).place(x=920,y=10)
+   textentry=Text(note,width='120',height='39')
+   textentry.place(x=20,y=50)
+   note.bind('<Control_L>s',lambda event:savefile())
+   note.bind('<Control_L>o',lambda event:openfile())
+   note.mainloop()
+   
 def calculator():
    global line
    calc=Toplevel(root)
@@ -167,23 +218,6 @@ def calculator():
    calc.bind('<KP_Enter>',lambda event:equal())
    calc.bind('<BackSpace>',lambda event:bs())
 
-def off():
-   global sign
-   if messagebox.askyesno("Power off","Would you like\nto quit the operating environment?")==True:
-      sign='''
-░██████╗░░█████╗░░█████╗░██████╗░██████╗░██╗░░░██╗███████╗██╗
-██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██║
-██║░░██╗░██║░░██║██║░░██║██║░░██║██████╦╝░╚████╔╝░█████╗░░██║
-██║░░╚██╗██║░░██║██║░░██║██║░░██║██╔══██╗░░╚██╔╝░░██╔══╝░░╚═╝
-╚██████╔╝╚█████╔╝╚█████╔╝██████╔╝██████╦╝░░░██║░░░███████╗██╗
-░╚═════╝░░╚════╝░░╚════╝░╚═════╝░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝'''
-      nlab.config(text=sign,bg='#000000',fg='#FFFFFF')
-      nlab.place(x=935)
-      root.configure(bg='#000000')
-      tbar.destroy()
-      mbar.destroy()
-      root.after(1000,lambda: root.destroy())
-
 def clockfunc():
    global button
    text_input = time.strftime("%H:%M")
@@ -198,16 +232,16 @@ applauncher=OptionMenu(root, clicked, *apps)
 applauncher.place(x=0,y=0)
 launchbut=Button(root,text="Launch",activebackground="#000000",activeforeground="#FFFFFF",font=("Calibri",10,"bold"),command=lambda: launch())
 launchbut.place(x=150,y=3)
-powerbut=Button(root,text="Power",activebackground="#000000",activeforeground="#FFFFFF",command=off)
-powerbut.place(x=1320,y=3)
-sign='''
+
+z='''
 ░█████╗░░█████╗░██╗░░░░░░█████╗░░█████╗░░██████╗
 ██╔══██╗██╔══██╗██║░░░░░██╔══██╗██╔══██╗██╔════╝
 ███████║███████║██║░░░░░██║░░██║██║░░██║╚█████╗░
 ██╔══██║██╔══██║██║░░░░░██║░░██║██║░░██║░╚═══██╗
 ██║░░██║██║░░██║███████╗╚█████╔╝╚█████╔╝██████╔╝
 ╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░░╚════╝░╚═════╝░'''
-nlab=Label(root,text=sign,fg='black',bg="#FFD700",font=("Consolas",9))
+nlab=Label(root,text=z,fg='black',bg="#FFD700",font=("Consolas",9))
 nlab.place(x=1025,y=35)
 lab.place(x=1260,y=728)
 button.place(x=1330,y=723)
+root.mainloop()
