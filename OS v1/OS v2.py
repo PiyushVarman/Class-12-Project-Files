@@ -31,7 +31,8 @@ def launch():
    
 def githublink():
    webbrowser.open_new_tab("Github.com/PiyushVarman")
-def jogger():
+   
+def jogger(): #Use Control-S to activate your colour option
    jog=Toplevel(root)
    jog.attributes('-topmost',True)
    jog.title("Jog")
