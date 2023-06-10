@@ -167,7 +167,7 @@ def calculator():
    bpl.grid(row=1,column=0)
    bsub=Button(calc,text="-",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("-"))
    bsub.grid(row=1,column=1)
-   bmu=Button(calc,text="x",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("x"))
+   bmu=Button(calc,text="x",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("*"))
    bmu.grid(row=1,column=2)
    bdi=Button(calc,text="÷",width=8,font=("Calibri",15),bg="#EDEDED",borderwidth=0.5,command=lambda:press("/"))
    bdi.grid(row=1,column=3)
