@@ -19,7 +19,6 @@ apps=[
    "Calculator",
    "Clock",
    "Notepad",
-   "Jogger",
    "Github Link"
    ]
 def launch():
@@ -32,24 +31,27 @@ def launch():
 def githublink():
    webbrowser.open_new_tab("Github.com/PiyushVarman")
    
-def jogger(): #Use Control-S to activate your colour option
-   jog=Toplevel(root)
-   jog.attributes('-topmost',True)
-   jog.title("Jog")
-   jog.geometry("465x221")
-   jog.resizable(False,False)
-   bgl=Label(jog,text="Enter the background colour (Use ctrl+S):")
+def missioncontrol(): #Use Control-S to activate your colour option
+   mc=Toplevel(root)
+   mc.attributes('-topmost',True)
+   mc.title("Mission Control")
+   mc.geometry("465x221")
+   mc.resizable(False,False)
+   bgl=Label(mc,text="Enter the background colour (Use ctrl+S):")
    bgl.place(x=10,y=60)
-   enter=Text(jog,height=1,width=55)
+   enter=Text(mc,height=1,width=55)
    enter.place(x=10,y=90)
    def en():
       s=(enter.get(1.0,END)).strip()
       nlab.configure(bg=str(s),fg='black')
       root.configure(bg=str(s))
-      if s.lower()=='black':
+      if s.lower()=='black' or s.lower()=='#000000':
          nlab.configure(fg='white')
-   jog.bind('<Control_L>s',lambda event:en())
-   jog.mainloop()
+      enter.delete('1.0','end')
+   mc.bind('<Control_L>s',lambda event:en())
+   mc.mainloop()
+mcbutton=Button(root,text='Settings',command=missioncontrol)
+mcbutton.place(x=1250,y=3)
    
 
 def clock():
@@ -260,7 +262,8 @@ z='''
 ███████║███████║██║░░░░░██║░░██║██║░░██║╚█████╗░
 ██╔══██║██╔══██║██║░░░░░██║░░██║██║░░██║░╚═══██╗
 ██║░░██║██║░░██║███████╗╚█████╔╝╚█████╔╝██████╔╝
-╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░░╚════╝░╚═════╝░'''
+╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░╚════╝░░╚════╝░╚═════╝░
+````````````````````````````````````````````````'''
 nlab=Label(root,text=z,fg='black',bg="#FFD700",font=("Consolas",9))
 nlab.place(x=1025,y=35)
 lab.place(x=1260,y=728)
