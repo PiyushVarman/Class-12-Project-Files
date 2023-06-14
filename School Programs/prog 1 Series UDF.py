@@ -14,9 +14,9 @@ def s1(x,n):
     for i in range(n+1):
         z=fac((2*i)+2)
         if i%2==0:
-            s+=x**((2*n)+1)/z
+            s+=x**((2*i)+1)/z
         else:
-            s-=x**((2*n)+1)/z
+            s-=x**((2*i)+1)/z
     return s
 
 def s2(x,n):
@@ -24,9 +24,9 @@ def s2(x,n):
     for i in range(n+1):
         z=fac((2*i)+3)
         if i%2==0:
-            s+=x**((2*n)+1)/z
+            s+=x**((2*i)+1)/z
         else:
-            s-=x**((2*n)+1)/z
+            s-=x**((2*i)+1)/z
     return s
 
 while True:
@@ -43,6 +43,6 @@ Select your option:'''))
         x=int(input("Enter the x value:"))
         n=int(input("Enter the n value:"))
         print("The sum of the series is",s2(x,n))
-        
+
     elif sel==3:
         break
