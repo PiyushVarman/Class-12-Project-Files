@@ -48,7 +48,7 @@ def missioncontrol(): #Use Control-S to activate your colour option
    changebutton.place(x=570,y=145)
    def desktop():
       l.config(text='Enter the background colour:',font=(25))
-      def en():
+      def desktopconfig():
          s=(enter.get(1.0,END)).strip()
          enter.delete('1.0','end')
          nlab.configure(bg=str(s),fg='black')
@@ -57,12 +57,22 @@ def missioncontrol(): #Use Control-S to activate your colour option
          wlc.configure(bg=str(s))
          if s.lower()=='black' or s.lower()=='#000000':
             nlab.configure(fg='white')
-      changebutton.config(text='Change',borderwidth=2,command=en)
+      changebutton.config(text='Change',borderwidth=2,command=desktopconfig)
+   def bar():
+      l.config(text='Enter the Task and Menu bar colour:')
+      def barconfig():
+         s=(enter.get(1.0,END)).strip()
+         enter.delete('1.0','end')
+         tbar.configure(bg=str(s))
+         mbar.configure(bg=str(s))
+         sbar.configure(bg=str(s))
+         wlc.configure(bg=str(s))
+      changebutton.config(text='Change',borderwidth=2,command=barconfig)
    db=Button(wlc,text='Desktop',font=(100),command=desktop)
    db.pack()
    enter=Text(mc,height=1,width=45,font=('arial',12))
    enter.place(x=250,y=120)
-   tb=Button(wlc,text='Bar',font=(100))
+   tb=Button(wlc,text='Bar',font=(100),command=bar)
    tb.pack()
    
    mc.mainloop()
