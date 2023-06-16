@@ -9,9 +9,9 @@ root=Tk()
 root.attributes('-fullscreen',True)
 root.configure(bg='#FFD700')
 root.title("AaloOs")
-tbar= Canvas(root,width='1366',height = "50")
+tbar= Canvas(root,width='1366',height = "50",highlightthickness=0)
 tbar.place(y=720)
-mbar=Canvas(root,width='1366',height = "27")
+mbar=Canvas(root,width='1366',height = "30",highlightthickness=0)
 mbar.place(y=0)
 lab=Label(root,font=("Calibri",18,"bold italic"))
 apps=[
@@ -30,55 +30,7 @@ def launch():
 def githublink():
    webbrowser.open_new_tab("Github.com/PiyushVarman")
 
-#Personalization and other settings
-def missioncontrol(): #Use Control-S to activate your colour option
-   mc=Toplevel(root)
-   mc.attributes('-topmost',True)
-   mc.title("Mission Control")
-   mc.geometry("700x350")
-   mc.resizable(False,False)
-   sbar=Canvas(mc,width=200,height=500)
-   sbar.place(x=0,y=0)
-   sbar.configure(bg='blue')
-   l=Label(mc,text='Welcome to MC!',font=(25))
-   l.place(x=250,y=90)
-   wlc=LabelFrame(mc,text='Mission Control',bg='blue',font=(100),fg='white',pady=10)
-   wlc.place(x=25,y=100)
-   changebutton=Button(mc,text='',font=(20),borderwidth=0,cursor='hand2')
-   changebutton.place(x=570,y=145)
-   def desktop():
-      l.config(text='Enter the background colour:',font=(25))
-      def desktopconfig():
-         s=(enter.get(1.0,END)).strip()
-         enter.delete('1.0','end')
-         nlab.configure(bg=str(s),fg='black')
-         root.configure(bg=str(s))
-         sbar.configure(bg=str(s))
-         wlc.configure(bg=str(s))
-         if s.lower()=='black' or s.lower()=='#000000':
-            nlab.configure(fg='white')
-      changebutton.config(text='Change',borderwidth=2,command=desktopconfig)
-   def bar():
-      l.config(text='Enter the Task and Menu bar colour:')
-      def barconfig():
-         s=(enter.get(1.0,END)).strip()
-         enter.delete('1.0','end')
-         tbar.configure(bg=str(s))
-         mbar.configure(bg=str(s))
-         sbar.configure(bg=str(s))
-         wlc.configure(bg=str(s))
-      changebutton.config(text='Change',borderwidth=2,command=barconfig)
-   db=Button(wlc,text='Desktop',font=(100),command=desktop)
-   db.pack()
-   enter=Text(mc,height=1,width=45,font=('arial',12))
-   enter.place(x=250,y=120)
-   tb=Button(wlc,text='Bar',font=(100),command=bar)
-   tb.pack()
-   
-   mc.mainloop()
-mcbutton=Button(root,text='Settings',command=missioncontrol,cursor='hand2')
-mcbutton.place(x=1250,y=3)
-   
+ 
 
 def clock():
    global fclock
@@ -267,16 +219,17 @@ def off():
       root.after(1000,lambda: root.destroy())
 
 def clockfunc():
-   global button
+   global clockbutton
    text_input = time.strftime("%H:%M")
    lab.config(text=text_input)
    lab.after(200,clockfunc)
-   button=Button(root,text="^",font=("Consolas", 18, 'bold'),fg="black",borderwidth=1,
+   clockbutton=Button(root,text="^",font=("Consolas", 18, 'bold'),bg='#FAF9F6',fg="black",borderwidth=1,
                  cursor="hand2",activebackground='#000000',activeforeground='#E8E8E8',command=clock)
 clockfunc()
 clicked=StringVar()
 clicked.set("Applications")
 applauncher=OptionMenu(root, clicked, *apps)
+applauncher.config(highlightthickness=0)
 applauncher.place(x=0,y=0)
 launchbut=Button(root,text="Launch",activebackground="#000000",activeforeground="#FFFFFF",font=("Calibri",10,"bold"),command=lambda: launch(),cursor='hand2')
 launchbut.place(x=150,y=3)
@@ -293,5 +246,58 @@ z='''
 nlab=Label(root,text=z,fg='black',bg="#FFD700",font=("Consolas",9))
 nlab.place(x=1025,y=35)
 lab.place(x=1260,y=728)
-button.place(x=1330,y=723)
+clockbutton.place(x=1330,y=723)
+#Personalization and other settings
+def missioncontrol(): #Use Control-S to activate your colour option
+   mc=Toplevel(root)
+   mc.attributes('-topmost',True)
+   mc.title("Mission Control")
+   mc.geometry("700x350")
+   mc.resizable(False,False)
+   sbar=Canvas(mc,width=200,height=500,highlightthickness=0)
+   sbar.place(x=0,y=0)
+   sbar.configure(bg='blue')
+   l=Label(mc,text='Welcome to MC!',font=(25))
+   l.place(x=250,y=90)
+   wlc=LabelFrame(mc,text='Mission Control',bg='blue',font=(100),fg='white',pady=10)
+   wlc.place(x=25,y=100)
+   changebutton=Button(mc,text='',font=(20),borderwidth=0,cursor='hand2')
+   changebutton.place(x=570,y=145)
+   def desktop():
+      l.config(text='Enter the background colour:',font=(25))
+      def desktopconfig():
+         s=(enter.get(1.0,END)).strip()
+         enter.delete('1.0','end')
+         nlab.configure(bg=str(s),fg='black')
+         root.configure(bg=str(s))
+         sbar.configure(bg=str(s))
+         wlc.configure(bg=str(s))
+         if s.lower()=='black' or s.lower()=='#000000':
+            nlab.configure(fg='white')
+      changebutton.config(text='Change',borderwidth=2,command=desktopconfig)
+   def bar():
+      l.config(text='Enter the Task and Menu bar colour:')
+      def barconfig():
+         s=(enter.get(1.0,END)).strip()
+         enter.delete('1.0','end')
+         tbar.configure(bg=str(s))
+         mbar.configure(bg=str(s))
+         sbar.configure(bg=str(s))
+         wlc.configure(bg=str(s))
+         for thing in tmbar:
+            eval(thing).config(bg=str(s),fg='black')
+            if s.lower()=='black' or s.lower()=='#000000':
+               eval(thing).config(fg='white')
+      changebutton.config(text='Change',borderwidth=2,command=barconfig)
+   db=Button(wlc,text='Desktop',font=(100),command=desktop)
+   db.pack()
+   enter=Text(mc,height=1,width=45,font=('arial',12))
+   enter.place(x=250,y=120)
+   tb=Button(wlc,text='Bar',font=(100),command=bar)
+   tb.pack()
+   
+   mc.mainloop()
+mcbutton=Button(root,text='Settings',command=missioncontrol,cursor='hand2')
+mcbutton.place(x=1250,y=3)
+tmbar=['mcbutton','applauncher','clockbutton','powerbut','launchbut','lab']
 root.mainloop()
