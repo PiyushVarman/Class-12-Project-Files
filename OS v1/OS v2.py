@@ -285,11 +285,14 @@ def missioncontrol(): #Use Control-S to activate your colour option
          colourfactor=1
          print(colourfactor)
          for thing in tmbar:
-               eval(thing).config(bg=str(s),fg='black')
-               if s.lower()=='black' or s.lower()=='#000000':
-                  eval(thing).config(fg='white')
-               if s.lower()=='white' or s.lower()=='#ffffff':
-                  wlc.config(fg='black')
+               if thing=='lab':
+                  continue
+               else:
+                  eval(thing).config(bg=str(s),fg='black')
+                  if s.lower()=='black' or s.lower()=='#000000':
+                     eval(thing).config(fg='white')
+                  if s.lower()=='white' or s.lower()=='#ffffff':
+                     wlc.config(fg='black')
       changebutton.config(text='Change',borderwidth=2,command=buttonconfig)
       mc.bind('<Return>',lambda event:buttonconfig())
    def bar():
