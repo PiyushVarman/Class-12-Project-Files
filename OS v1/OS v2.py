@@ -281,6 +281,7 @@ def missioncontrol(): #Use Control-S to activate your colour option
       def barconfig():
          s=(enter.get(1.0,END)).strip()
          enter.delete('1.0','end')
+         wlc.configure(fg='white')
          tbar.configure(bg=str(s))
          mbar.configure(bg=str(s))
          sbar.configure(bg=str(s))
@@ -289,6 +290,8 @@ def missioncontrol(): #Use Control-S to activate your colour option
             eval(thing).config(bg=str(s),fg='black')
             if s.lower()=='black' or s.lower()=='#000000':
                eval(thing).config(fg='white')
+            if s.lower()=='white' or s.lower()=='#ffffff':
+               wlc.config(fg='black')
       changebutton.config(text='Change',borderwidth=2,command=barconfig)
       mc.bind('<Return>',lambda event:barconfig())
    db=Button(wlc,text='Desktop',font=(100),command=desktop)
