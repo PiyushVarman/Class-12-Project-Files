@@ -30,8 +30,6 @@ def launch():
 def githublink():
    webbrowser.open_new_tab("Github.com/PiyushVarman")
 
- 
-
 def clock():
    global fclock
    fclock=Toplevel(root)
