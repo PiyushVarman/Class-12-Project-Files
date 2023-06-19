@@ -261,6 +261,7 @@ def missioncontrol(): #Use Control-S to activate your colour option
    wlc.place(x=25,y=100)
    changebutton=Button(mc,text='',font=(20),borderwidth=0,cursor='hand2')
    changebutton.place(x=570,y=145)
+   colourfactor=0
    def desktop():
       l.config(text='Enter the background colour:',font=(25))
       def desktopconfig():
@@ -274,9 +275,27 @@ def missioncontrol(): #Use Control-S to activate your colour option
             nlab.configure(fg='white')
       changebutton.config(text='Change',borderwidth=2,command=desktopconfig)
       mc.bind('<Return>',lambda event:desktopconfig())
+   def buttons():
+      l.config(text='Enter the colour for the buttons:',font=(25))
+      def buttonconfig():
+         s=(enter.get(1.0,END)).strip()
+         enter.delete('1.0','end')
+         sbar.configure(bg=str(s))
+         wlc.configure(bg=str(s))
+         colourfactor=1
+         print(colourfactor)
+         for thing in tmbar:
+               eval(thing).config(bg=str(s),fg='black')
+               if s.lower()=='black' or s.lower()=='#000000':
+                  eval(thing).config(fg='white')
+               if s.lower()=='white' or s.lower()=='#ffffff':
+                  wlc.config(fg='black')
+      changebutton.config(text='Change',borderwidth=2,command=buttonconfig)
+      mc.bind('<Return>',lambda event:buttonconfig())
    def bar():
       l.config(text='Enter the Task and Menu bar colour:')
       def barconfig():
+         global colourfactor
          s=(enter.get(1.0,END)).strip()
          enter.delete('1.0','end')
          wlc.configure(fg='white')
@@ -284,16 +303,19 @@ def missioncontrol(): #Use Control-S to activate your colour option
          mbar.configure(bg=str(s))
          sbar.configure(bg=str(s))
          wlc.configure(bg=str(s))
-         for thing in tmbar:
-            eval(thing).config(bg=str(s),fg='black')
-            if s.lower()=='black' or s.lower()=='#000000':
-               eval(thing).config(fg='white')
-            if s.lower()=='white' or s.lower()=='#ffffff':
-               wlc.config(fg='black')
+         if colourfactor==0:
+            for thing in tmbar:
+               eval(thing).config(bg=str(s),fg='black')
+               if s.lower()=='black' or s.lower()=='#000000':
+                  eval(thing).config(fg='white')
+               if s.lower()=='white' or s.lower()=='#ffffff':
+                  wlc.configure(fg='black')
       changebutton.config(text='Change',borderwidth=2,command=barconfig)
       mc.bind('<Return>',lambda event:barconfig())
    db=Button(wlc,text='Desktop',font=(100),command=desktop)
    db.pack()
+   bb=Button(wlc,text='Buttons',font=(100),command=buttons)
+   bb.pack()
    enter=Text(mc,height=1,width=45,font=('arial',12))
    enter.place(x=250,y=120)
    tb=Button(wlc,text='Bar',font=(100),command=bar)
