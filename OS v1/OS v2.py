@@ -275,6 +275,7 @@ def missioncontrol(): #Use Control-S to activate your colour option
          if s.lower()=='black' or s.lower()=='#000000':
             nlab.configure(fg='white')
       changebutton.config(text='Change',borderwidth=2,command=desktopconfig)
+      mc.bind('<Return>',lambda event:desktopconfig())
    def bar():
       l.config(text='Enter the Task and Menu bar colour:')
       def barconfig():
@@ -289,6 +290,7 @@ def missioncontrol(): #Use Control-S to activate your colour option
             if s.lower()=='black' or s.lower()=='#000000':
                eval(thing).config(fg='white')
       changebutton.config(text='Change',borderwidth=2,command=barconfig)
+      mc.bind('<Return>',lambda event:barconfig())
    db=Button(wlc,text='Desktop',font=(100),command=desktop)
    db.pack()
    enter=Text(mc,height=1,width=45,font=('arial',12))
