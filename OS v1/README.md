@@ -4,7 +4,7 @@ Thanks!
 
 Customization Options:
 Original Setup:
-![image](https://github.com/PiyushVarman/Class-12-Project-Files/assets/118827399/a870a6bd-a47a-4bd3-b4e2-64c5a11e43a2 | width=100)
+![image](https://github.com/PiyushVarman/Class-12-Project-Files/assets/118827399/a870a6bd-a47a-4bd3-b4e2-64c5a11e43a2)
 
 
 Aesthetic Palette (Changing the Hex Codes using Mission Control):
