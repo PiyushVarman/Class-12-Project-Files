@@ -9,3 +9,6 @@ Original Setup:
 
 Aesthetic Palette (Changing the Hex Codes using Mission Control):
 ![image](https://github.com/PiyushVarman/Class-12-Project-Files/assets/118827399/a6ea5d47-ac11-4079-93ff-d44e1646df75)
+
+"The Blank Slate" (Random colours; wasn't thinking)
+![image](https://github.com/PiyushVarman/Class-12-Project-Files/assets/118827399/41d8a993-3e3c-41c9-80a7-09f381f38d9b)
