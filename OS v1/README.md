@@ -1,4 +1,4 @@
-Please run the program at a resolution of 1366x768 for optimal results.
+Please run the program at a resolution of 1366x768 for optimal results.\n
 Let me know your thoughts!
 Thanks!
 
