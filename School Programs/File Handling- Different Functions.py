@@ -1,4 +1,4 @@
-def vcount():
+def vcount(): #Counting the number of vowels in a given file
     f=open("proverb.txt")
     count=0
     x=f.read()
@@ -8,14 +8,15 @@ def vcount():
     print("The number of vowels in the text file is",count,".")
     f.close()
 
-def aprint():
+def aprint(): #Printing all the sentences that start with 'A'
     f=open("proverb.txt")
-    x=f.read()
-    if x[0]=='A':
-        print(x)
+    x=f.readlines()
+    for i in x:
+        if i[0]=='A':
+            print(i)
     f.close()
 
-def findthethis():
+def findthethis(): #Print the number of occurances of "the" and "this"
     f=open("proverb.txt")
     count=0
     x=((f.read()).lower()).split()
@@ -25,7 +26,7 @@ def findthethis():
     print("The number of occurances of 'The' and 'This' is",count,".")
     f.close()
 
-def uppercopy():
+def uppercopy(): #Copy all the text from one file to another, in uppercase.
     f=open("proverb.txt")
     x=open('uppercase.txt','w')
     z=(f.read()).upper()
@@ -33,7 +34,7 @@ def uppercopy():
     f.close()
     x.close()
 
-def wordpal():
+def wordpal(): #Write all the words that are palindromes in another file.
     f=open("proverb.txt")
     x=open("abc.txt",'w')
     z=(f.read()).lower()
