@@ -9,7 +9,7 @@ def binsearch(l):
             st=1
             break
         elif l[mid]>chk:
-            last=mid-1
+            end=mid-1
         else:
             start=mid+1
     if st==1:
@@ -26,12 +26,15 @@ while True:
 3 - Exit'''))
     
     if sel==1:
-        l=list(input("Enter the list:"))
+        l=[]
+        n=int(input("Enter the number of elements:"))
+        for i in range(n):
+            l.append(int(input("Enter the number:")))
         binsearch(l)
     
     if sel==2:
         x=input("Enter the string:")
         print(rev(x))
-        
+
     if sel==3:
         break
