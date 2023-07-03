@@ -1,3 +1,10 @@
+'''
+2. STATISTICAL FUNCTIONS
+AIM : To compute the mean, mode and median of a list of integers.
+METHODOLOGY: A list of integers are read as input and passes as argument to an user
+defined function which computes the mean, mode, median and returns all the three values
+which is printed in the calling function.
+'''
 n=int(input("Enter the number of terms:"))
 l=[]
 for i in range(n):
