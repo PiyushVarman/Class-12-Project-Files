@@ -1,3 +1,10 @@
+'''
+4. MENU DRIVEN CODE- LIST/STRING:
+AIM: To write user defined functions and test them with a menu driven code
+METHODOLOGY: The Binary Search operation on a list of integers in ascending order and
+Reversing a String operation is performed using 2 user defined functions. A menu is displayed
+and the user’s choice is accepted. Based on the choice the appropriate function is executed.'''
+
 def binsearch(l):
     n=len(l)
     start,end,st=0,n-1,0 #st=status checker
