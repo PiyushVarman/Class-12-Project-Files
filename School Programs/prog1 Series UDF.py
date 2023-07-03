@@ -2,6 +2,10 @@
 #1) x/2!-x3/4!+x5/6!...n
 #2) x/3!-x3/5!+x5/7!-x7/9!..n
 #3) Exit
+'''
+METHODOLOGY : The values for x and n are read as inputs and the sum of the 2 series are
+computed. The program makes use of one user defined function to compute the factorial and
+another to compute the powers of x.'''
 
 def fac(n):
     f=1
