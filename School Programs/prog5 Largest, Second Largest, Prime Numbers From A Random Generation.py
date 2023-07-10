@@ -6,7 +6,7 @@ METHODOLOGY: The lower and upper limits are read as inputs. Three user defined f
 are written to do the required operations namely i)to generate the random numbers
 between the given limits ii) to find the largest, second largest number in the generated list
 and iii) to store the prime numbers in a local list and print them else print a message stating
-‘No prime numbers in the generated list’.
+'No prime numbers in the generated list'.
 '''
 import random
 
