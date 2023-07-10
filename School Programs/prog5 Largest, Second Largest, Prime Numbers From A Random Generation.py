@@ -49,6 +49,6 @@ u=int(input("Enter the upper limit:"))
 x=generate(l,u)
 max_secmax(x)
 if len(prime(x))==0:
-    print("No prime numbers in the generated list")
+    print("No prime numbers in the generated list.")
 else:
     print("The list of prime numbers is",prime(x))
