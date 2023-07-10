@@ -1,3 +1,13 @@
+'''
+5. LARGEST, SECOND LARGEST, PRIME NUMBERS FROM A RANDOM GENERATION
+AIM: To find the largest, second largest and the prime numbers from a list of randomly
+generated integers
+METHODOLOGY: The lower and upper limits are read as inputs. Three user defined functions
+are written to do the required operations namely i)to generate the random numbers
+between the given limits ii) to find the largest, second largest number in the generated list
+and iii) to store the prime numbers in a local list and print them else print a message stating
+‘No prime numbers in the generated list’.
+'''
 import random
 
 def generate(l,u):
