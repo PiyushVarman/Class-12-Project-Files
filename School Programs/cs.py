@@ -27,14 +27,18 @@ def bread():
 
 def designationsearch():
   f=open("employee.dat","rb")
-  z=pickle.load(f)
   x=input("Enter the designation to be found:").lower().replace(" ","")
   l=[]
   found=0
-  for i in z:
-    if z[2].lower()==x:
-      l.append(i)
-      found=1
+  while True:
+    try:
+      z=pickle.load(f)
+      for i in z:
+        if i==x:
+          l.append(z)
+          found=1
+    except:
+      break
   if found==1:
     print("Employee No.","Employee Name","Designation","Salary",sep="\t")
     for i in l:
