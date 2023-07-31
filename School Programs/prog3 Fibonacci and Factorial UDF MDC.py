@@ -5,6 +5,7 @@ using 2 user defined functions. A menu is displayed and the user’s choice is a
 on the choice the appropriate function is executed.
 
 '''
+print("OUTPUT")
 def fac(x):
     f=1
     for i in range(1,x+1):
