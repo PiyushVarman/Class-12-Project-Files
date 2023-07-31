@@ -9,7 +9,7 @@ function that takes as parameter, each element of the nested tuple, which calcul
 and returns both the BMI and the result as OBESE /OVERWEIGHT/NORMAL/UNDERWEIGHT.
 The returned values are displayed in the main function for each person.
 '''
-
+print("OUTPUT")
 def vowelword(n):
     t=()
     for i in n:
