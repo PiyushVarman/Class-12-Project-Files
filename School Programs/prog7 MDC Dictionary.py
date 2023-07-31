@@ -6,6 +6,7 @@ stored in a dictionary. Using a menu and user’s choice, the operations like Ad
 detail, View all subscribers, Modify name of a given subscriber, Delete an existing subscriber
 are done using user defined functions.'''
 
+print("OUTPUT")
 def add(d):
     x=input("Enter the name to be added:")
     d[x]=int(input("Enter the phone number:"))
