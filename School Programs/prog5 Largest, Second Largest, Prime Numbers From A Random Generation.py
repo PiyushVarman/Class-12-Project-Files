@@ -9,7 +9,7 @@ and iii) to store the prime numbers in a local list and print them else print a 
 'No prime numbers in the generated list'.
 '''
 import random
-
+print("OUTPUT")
 def generate(l,u):
     rl=[]
     for i in range(l,u+1):
