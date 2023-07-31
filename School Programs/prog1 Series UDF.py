@@ -6,7 +6,7 @@
 METHODOLOGY : The values for x and n are read as inputs and the sum of the 2 series are
 computed. The program makes use of one user defined function to compute the factorial and
 another to compute the powers of x.'''
-
+print("OUTPUT")
 def fac(n):
     f=1
     for i in range(1,n+1):
