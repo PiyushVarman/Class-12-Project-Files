@@ -1,4 +1,5 @@
-'''AIM: To create a nested dictionary and manipulate the same.
+'''8. NESTED DICTIONARY
+AIM: To create a nested dictionary and manipulate the same.
 METHODOLOGY: A nested dictionary is created having the main keys to be 3 categories
 namely SENIORS, JUNIORS, SUBJUNIORS. For each of these keys, an inner dictionary is
 created with keys as BHARATHI, TAGORE, SHIVAJI, PRATAP and values as the score for that
