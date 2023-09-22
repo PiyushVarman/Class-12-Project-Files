@@ -1,0 +1,93 @@
+print("OUTPUT")
+f=open("textfile.txt","a")
+l=[]
+chk='y'
+c=0
+while chk[0]=='y':
+    l.append(input("Enter the line to be inputted in the file:")+"\n")
+    chk=input("enter choice:").strip().lower()
+else:
+    f.writelines(l)
+    f.close()
+    
+def lenwords():
+    f=open("textfile.txt","r")
+    print(len(f.readlines()))
+    f.close()
+    
+def copywords():
+    f=open("textfile.txt","r+")
+    l=f.readlines()
+    z=[]
+    for i in l:
+        for x in i.split():
+            if 'u' in x:
+                z.append(x+'\n')     
+    p=open("utextfile.txt","r+")
+    p.writelines(z)
+    p.seek(0)
+    print(p.read())
+
+def casewords():
+    f=open("textfile.txt","r+")
+    l=f.readlines()
+    for i in range(len(l)):
+        l[i]=l[i].swapcase()
+    f.seek(0)
+    f.writelines(l)
+    f.seek(0)
+    print("The Modified file is:\n",f.read())
+    
+while True:
+    sel=int(input('''1- Display Number of lines
+2- Copy words
+3- Convert Case of letters
+4- Exit
+Choose your option:'''))
+    
+    if sel==1:
+        lenwords()
+    elif sel==2:
+        copywords()
+    elif sel==3:
+        casewords()
+    elif sel==4:
+        print("Program terminated.")
+        break
+
+OUTPUT
+Enter the line to be inputted in the file:Hello World
+enter choice:y
+Enter the line to be inputted in the file:Life is beautiful
+enter choice:y
+Enter the line to be inputted in the file:Text file
+enter choice:n
+1- Display Number of lines
+2- Copy words
+3- Convert Case of letters
+4- Exit
+Choose your option:1
+3
+1- Display Number of lines
+2- Copy words
+3- Convert Case of letters
+4- Exit
+Choose your option:2
+beautiful
+
+1- Display Number of lines
+2- Copy words
+3- Convert Case of letters
+4- Exit
+Choose your option:3
+The Modified file is:
+ hELLO wORLD
+lIFE IS BEAUTIFUL
+tEXT FILE
+
+1- Display Number of lines
+2- Copy words
+3- Convert Case of letters
+4- Exit
+Choose your option:4
+Program terminated.
