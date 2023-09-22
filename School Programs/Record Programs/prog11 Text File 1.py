@@ -4,7 +4,7 @@ perform the operations in the menu according to the user’s choice
 METHODOLOGY: A text file is created by reading one line at a time and asking is the user
 wants to input more lines with a Y/N choice. A menu is then displayed and the related
 operations are performed on the text file, depending on user’s choice.'''
-
+print("OUTPUT")
 f=open("textfile.txt","a")
 l=[]
 chk='y'
