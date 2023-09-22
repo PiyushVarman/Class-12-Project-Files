@@ -11,6 +11,7 @@ the outputs displayed in the main function.'''
 
 import MATRIX as mat
 l=[]
+print("OUTPUT")
 n=int(input("Enter the number of rows and columns in the square matrix:"))
 for i in range(n):
     print("\nRow number",i+1)
