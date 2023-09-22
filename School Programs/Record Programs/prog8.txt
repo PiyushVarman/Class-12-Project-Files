@@ -1,0 +1,48 @@
+print("OUTPUT")
+def MAX_SCORE(d):
+    for i in d:
+        chk,chknm=0,''
+        for j in d[i].items():
+            if j[1]>chk:
+                chk=j[1]
+                chknm=j[0]
+        print("The maximum score was acheived by",chknm,"with",chk,"point(s) in the",i,"category.")
+d={}
+l=["SENIORS","JUNIORS","SUBJUNIORS"]
+h=["BHARATHI","TAGORE","SHIVAJI","PRATAP"]
+for i in l:
+    x={}
+    print("\n",i," Category:",sep='')
+    for j in h:
+        x[j]=int(input("Enter the scores for "+str(j)+":"))
+    d[i]=x
+
+print('\n',d,sep='',end='\n\n')
+MAX_SCORE(d)
+                
+OUTPUT
+
+SENIORS Category:
+Enter the scores for BHARATHI:100
+Enter the scores for TAGORE:90
+Enter the scores for SHIVAJI:110
+Enter the scores for PRATAP:50
+
+JUNIORS Category:
+Enter the scores for BHARATHI:50
+Enter the scores for TAGORE:60
+Enter the scores for SHIVAJI:100
+Enter the scores for PRATAP:40
+
+SUBJUNIORS Category:
+Enter the scores for BHARATHI:30
+Enter the scores for TAGORE:40
+Enter the scores for SHIVAJI:150
+Enter the scores for PRATAP:20
+
+{'SENIORS': {'BHARATHI': 100, 'TAGORE': 90, 'SHIVAJI': 110, 'PRATAP': 50}, 'JUNIORS': {'BHARATHI': 50, 'TAGORE': 60, 'SHIVAJI': 100, 'PRATAP': 40}, 'SUBJUNIORS': {'BHARATHI': 30, 'TAGORE': 40, 'SHIVAJI': 150, 'PRATAP': 20}}
+
+The maximum score was acheived by SHIVAJI with 110 point(s) in the SENIORS category.
+The maximum score was acheived by SHIVAJI with 100 point(s) in the JUNIORS category.
+The maximum score was acheived by SHIVAJI with 150 point(s) in the SUBJUNIORS category.
+
