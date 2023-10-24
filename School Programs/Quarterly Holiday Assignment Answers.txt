@@ -6,3 +6,5 @@
     -> where productioncost>10000 and productioncost<100000;
 6. select * from movie
     -> where category="Comedy" or category="Action";
+7. select * from movie
+    -> where releasedate is NULL;
