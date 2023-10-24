@@ -2,3 +2,5 @@
 2. select movieid, moviename, (productioncost+businesscost) as totalearning from movie;
 3. select distinct category from movie;
 4. select movieid, moviename, (businesscost-productioncost) as NetProfit from movie;
+5.  select movieid, moviename, productioncost as cost from movie
+    -> where productioncost>10000 and productioncost<100000;
