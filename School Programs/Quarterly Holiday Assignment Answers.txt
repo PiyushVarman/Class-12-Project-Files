@@ -1,4 +1,4 @@
 1. select * from movie
 2. select movieid, moviename, (productioncost+businesscost) as totalearning from movie;
 3. select distinct category from movie;
-4.
+4.  select movieid, moviename, (businesscost-productioncost) as cost from movie;
