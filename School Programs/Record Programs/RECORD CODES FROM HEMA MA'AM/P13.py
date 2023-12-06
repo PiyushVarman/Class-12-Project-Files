@@ -53,7 +53,8 @@ students in EG stream.
                         LB+=[l]
                     elif l[2].lower()=='eg':
                         LE+=[l]
-            except EOFError:pass
+            except EOFError:
+                pass
         topdet(LS,'Computer Science')
         topdet(LB,'Biology')
         topdet(LC,'Commerce')
@@ -71,7 +72,8 @@ students in EG stream.
                         l[3]-=2
                     f.seek(s)
                     pickle.dump(l,f)
-            except EOFError:pass
+            except EOFError:
+                pass
         print('Modified successfully')
         print('Modified file')
         with open('STUDENT.dat','rb') as f:
