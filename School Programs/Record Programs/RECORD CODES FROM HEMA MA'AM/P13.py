@@ -79,7 +79,8 @@ students in EG stream.
                 while True:
                     l=pickle.load(f)
                     print('Name:',l[1],'Roll no:',l[0],'Stream:',l[2],'Total:',l[3])
-            except EOFError:pass
+            except EOFError:
+                pass
     elif ch==3:
         break
     else:
