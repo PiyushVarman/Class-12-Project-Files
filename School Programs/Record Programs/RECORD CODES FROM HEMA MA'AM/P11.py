@@ -1,35 +1,22 @@
-'''11. TEXT FILE 1
-AIM: To create a text file with contents entered by the user as long as the user wishes to and
-perform the operations in the menu according to the user’s choice
-METHODOLOGY: A text file is created by reading one line at a time and asking is the user
-wants to input more lines with a Y/N choice. A menu is then displayed and the related
-operations are performed on the text file, depending on user’s choice.
-Note: The menu options to be as follows:
-MENU
-1. Display number of lines
-2. Copy the words containing ‘U’ into another file and display the new file
-3. Convert the case of the letters(lower to upper and vice versa) in the original text file and
-display the contents
-4. Exit'''
+'''11. TEXT FILE 1'''
 with open('data.txt','w') as f:
     while True:
         s=input('Enter a line:')
         f.write(s+'\n')
-        ch=input('Do you wish to continue?(Y/N)')
+        ch=input('Do you wish to continue?(Y/N):')
         if ch.upper()=='N':
-            print('File created successfully')
+            print('File created successfully.')
             break
 while True:
-    print('''MENU
-1. Display number of lines
-2. Copy the words containing ‘U’ into another file and display the new file
-3. Convert the case of the letters(lower to upper and vice versa) in the original text file and
+    ch=int(input('''\n1- Display number of lines
+2- Copy the words containing ‘U’ into another file and display the new file
+3- Convert the case of the letters(lower to upper and vice versa) in the original text file and
 display the contents
-4. Exit''')
-    ch=int(input('Enter option:'))
+4- Exit
+Select your option:'''))
     if ch==1:
         with open('data.txt','r') as f:
-            print('Number of lines',len(f.readlines()))
+            print('Number of lines:',len(f.readlines()))
     elif ch==2:
         with open('data.txt','r') as f,open('new.txt','w') as f1:
             s=f.readline()
@@ -49,37 +36,55 @@ display the contents
                 print(s.swapcase(),end='')
                 s=f.readline()
     elif ch==4:
+        print("Program Terminated.")
         break
     else:
-        print('Invalid option')
-'''OUTPUT:
-Enter a line:Hello World
-Do you wish to continue?(Y/N)Y
-Enter a line:Ubuntu is good
-Do you wish to continue?(Y/N)Y
-Enter a line:How are U?
-Do you wish to continue?(Y/N)N
-File created successfully
-MENU
-1. Display number of lines
-2. Copy the words containing ‘U’ into another file and display the new file
-3. Convert the case of the letters(lower to upper and vice versa) in the original text file and
+        print('Invalid option.')
+
+
+'''Enter a line:Hello World
+Do you wish to continue?(Y/N):y
+Enter a line:Ubuntu is an OS
+Do you wish to continue?(Y/N):y
+Enter a line:Welcome to Earth
+Do you wish to continue?(Y/N):n
+File created successfully.
+
+1- Display number of lines
+2- Copy the words containing ‘U’ into another file and display the new file
+3- Convert the case of the letters(lower to upper and vice versa) in the original text file and
 display the contents
-4. Exit
-Enter option:3
+4- Exit
+Select your option:1
+Number of lines: 3
+
+1- Display number of lines
+2- Copy the words containing ‘U’ into another file and display the new file
+3- Convert the case of the letters(lower to upper and vice versa) in the original text file and
+display the contents
+4- Exit
+Select your option:2
+Words containing U
+Ubuntu
+
+1- Display number of lines
+2- Copy the words containing ‘U’ into another file and display the new file
+3- Convert the case of the letters(lower to upper and vice versa) in the original text file and
+display the contents
+4- Exit
+Select your option:3
 hELLO wORLD
-uBUNTU IS GOOD
-hOW ARE u?
-MENU
-1. Display number of lines
-2. Copy the words containing ‘U’ into another file and display the new file
-3. Convert the case of the letters(lower to upper and vice versa) in the original text file and
+uBUNTU IS AN os
+wELCOME TO eARTH
+
+1- Display number of lines
+2- Copy the words containing ‘U’ into another file and display the new file
+3- Convert the case of the letters(lower to upper and vice versa) in the original text file and
 display the contents
-4. Exit
-Enter option:4
-
-
-
+4- Exit
+Select your option:4
+Program Terminated.
+'''
 
 
 
