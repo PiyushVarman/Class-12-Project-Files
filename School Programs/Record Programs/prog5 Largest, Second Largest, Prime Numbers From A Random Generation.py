@@ -18,6 +18,7 @@ def generate(l,u):
 
 def max_secmax(l):
     large=l[0]
+    print(l)
     n=len(l)
     for i in range(n):
         if l[i]>large:
@@ -27,7 +28,7 @@ def max_secmax(l):
             sec=l[i]
             break
     for i in range(n):
-        if l[i]!=large and l[1]>sec:
+        if l[i]!=large and l[i]>sec:
             sec=l[i]
     print("The largest number is",large)
     print("The second largest number is",sec)
